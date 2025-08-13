@@ -1,0 +1,563 @@
+ @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+ :root {
+     --primary-color: #3D5AFE;
+     --secund-color: #FFC400;
+     --background-color: #F5F5F5;
+     --text-color: #6d6d6def;
+ }
+
+ * {
+     padding: 0;
+     margin: 0;
+     box-sizing: border-box;
+ }
+
+ html {
+     scroll-behavior: smooth;
+ }
+
+ body {
+     font-family: "Poppins", sans-serif;
+     background-color: var(--background-color);
+ }
+
+ header {
+     position: absolute;
+     display: flex;
+     width: 100%;
+     margin: 3vh 0 0 0;
+     /* Convertido para VH - espaçamento proporcional à altura da tela */
+     justify-content: center;
+     align-items: center;
+     gap: clamp(2rem, 8vw, 5.5rem);
+     /* Gap responsivo com limites mínimos e máximos */
+     z-index: 100;
+ }
+
+ header .link-menu {
+     position: fixed;
+     display: flex;
+     background-color: var(--background-color);
+     padding: 1vh 4vw;
+     /* Padding baseado no viewport - se adapta automaticamente */
+     border-radius: clamp(1.5rem, 3vw, 2.5rem);
+     /* Border radius fluído */
+     box-shadow: 0 0.5vh 1vh -0.2vh rgba(0, 0, 0, 0.25);
+     /* Shadow em VH para proporção vertical */
+ }
+
+ header .link-menu ul {
+     position: relative;
+     display: flex;
+     gap: clamp(1.5rem, 4vw, 3.125rem);
+     /* Gap que se adapta à largura da tela */
+     text-decoration: none;
+     list-style: none;
+     z-index: 100;
+ }
+
+ header .link-menu ul a {
+     text-decoration: none;
+     font-family: "Noto", sans-serif;
+     font-weight: 200;
+     cursor: pointer;
+     color: var(--primary-color);
+     transition: all .3s ease-in;
+     font-size: clamp(0.8rem, 1.2vw, 1rem);
+     /* Texto que escala com o viewport */
+ }
+
+ header .link-menu ul a:hover {
+     color: var(--secund-color);
+     border-bottom: 0.1vh solid var(--secund-color);
+     /* Borda em VH */
+     background-color: var(--primary-color);
+     padding: 0.5vh 1vw;
+     /* Padding híbrido VH/VW */
+     border-radius: 2vw;
+     /* Border radius em VW */
+ }
+
+ header .link-menu ul a:focus {
+     color: var(--secund-color);
+     border-bottom: 0.1vh solid var(--secund-color);
+     background-color: var(--primary-color);
+     padding: 0.5vh 1vw;
+     border-radius: 2vw;
+ }
+
+ header .link-menu ul a:active {
+     color: var(--secund-color);
+     border-bottom: 0.1vh solid var(--secund-color);
+     background-color: var(--primary-color);
+     padding: 0.5vh 1vw;
+     border-radius: 2vw;
+ }
+
+ header .logo h4 {
+     margin: 0 30vw 0 0;
+     /* Margem proporcional à largura da tela */
+     font-family: "Noto", sans-serif;
+     font-weight: 800;
+     color: var(--primary-color);
+     font-size: clamp(1rem, 2vw, 1.5rem);
+     /* Tamanho fluído do logo */
+ }
+
+ header .logo h4 span {
+     color: var(--secund-color);
+ }
+
+ .img-content {
+     width: 100%;
+     max-height: 50vh;
+     /* Altura máxima baseada no viewport height */
+ }
+
+ .img-content>img:nth-child(1) {
+     position: absolute;
+     width: clamp(8rem, 12vw, 12.5rem);
+     /* Tamanho fluído das imagens */
+     transform: rotate(150deg);
+     top: -50vh;
+     /* Posicionamento em VH - proporcional à altura */
+     left: -15vw;
+     /* Posicionamento em VW - proporcional à largura */
+     animation: animation-img-top 8s linear infinite;
+ }
+
+ .img-content>img:nth-child(2) {
+     position: absolute;
+     width: clamp(10rem, 15vw, 15.625rem);
+     /* Imagem central com tamanho fluído */
+     transform: rotate(-30deg);
+     top: -5vh;
+     /* Posicionamento vertical fluído */
+     right: -15vw;
+     /* Usando right com VW para melhor responsividade */
+     filter: blur(clamp(0.2rem, 0.5vw, 0.3125rem));
+     /* Blur proporcional */
+     animation: animation-img-bluer 8s linear infinite;
+ }
+
+ .img-content>img:nth-child(3) {
+     position: absolute;
+     width: clamp(8rem, 12vw, 12.5rem);
+     /* Terceira imagem fluída */
+     transform: rotate(-150deg);
+     top: -50vh;
+     /* Posicionamento vertical consistente */
+     right: -35vw;
+     /* Posicionamento à direita fluído */
+     animation: animation-img-top2 10s linear infinite;
+ }
+
+ .hero {
+     width: 100%;
+     height: 100vh;
+     /* Altura completa da viewport - seção hero ocupa tela inteira */
+     position: relative;
+     top: 0;
+ }
+
+ .hero h1 {
+     font-family: 'Poppins', sans-serif;
+     color: var(--primary-color);
+     font-weight: 700;
+     font-size: clamp(2rem, 6vw, 3.75rem);
+     /* Tipografia totalmente fluída */
+ }
+
+ .hero h1 span {
+     color: var(--secund-color);
+     font-weight: 900;
+ }
+
+ .hero p {
+     color: #6d6d6def;
+     font-size: clamp(0.9rem, 1.8vw, 1rem);
+     /* Texto do parágrafo responsivo */
+     line-height: clamp(1.4rem, 3vw, 1.875rem);
+     /* Line height fluída */
+     font-weight: 400;
+ }
+
+ .hero p span {
+     font-family: "Noto", sans-serif;
+     font-weight: 900;
+     color: var(--primary-color);
+ }
+
+ .btn-hero {
+     cursor: pointer;
+     font-size: clamp(0.8rem, 1.5vw, 1rem);
+     /* Texto do botão fluído */
+     font-family: "Noto", sans-serif;
+     text-transform: uppercase;
+     margin-top: 3vh;
+     /* Margem baseada na altura da viewport */
+     width: clamp(18rem, 25vw, 21.875rem);
+     /* Largura do botão fluída */
+     color: var(--background-color);
+     background-color: var(--primary-color);
+     padding: 2vh 3vw;
+     /* Padding híbrido para proporção perfeita */
+     border: none;
+     border-radius: 5vw;
+     /* Border radius em VW - sempre proporcional */
+     box-shadow: 0 0.5vh 1vh -0.2vh rgba(0, 0, 0, 0.25);
+     /* Shadow em VH */
+     transition: all 0.4s ease;
+ }
+
+ .btn-hero:hover {
+     color: var(--primary-color);
+     background-color: var(--secund-color);
+     transform: scale(1.1) rotate(2deg);
+ }
+
+ .content-hero {
+     position: relative;
+     display: flex;
+     flex-direction: column;
+     max-width: clamp(20rem, 45vw, 40.625rem);
+     /* Largura fluída com limites */
+     max-height: clamp(20rem, 40vh, 28.125rem);
+     /* Altura fluída */
+     top: 15vh;
+     /* Posicionamento vertical baseado no viewport */
+     left: clamp(2rem, 15vw, 15.625rem);
+     /* Posicionamento lateral fluído */
+ }
+
+ .section-sobre {
+     position: relative;
+     display: flex;
+     top: -35vh;
+     justify-content: center;
+     align-items: center;
+     min-height: 100vh;
+     /* Altura mínima da viewport */
+     padding: 5vh 2vw;
+     /* Padding responsivo */
+ }
+
+ .content-sobre {
+     position: relative;
+     padding: 4vh 2vw 4vh 4vw;
+     /* Padding totalmente em viewport units */
+     width: 100%;
+     max-width: clamp(60rem, 90vw, 87.5rem);
+     /* Largura máxima fluída */
+     background-color: var(--primary-color);
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     flex-direction: column;
+     border-radius: clamp(2rem, 4vw, 3.125rem);
+     /* Border radius fluído */
+     box-shadow: 0 1vh 2vh -0.5vh rgba(0, 0, 0, 0.77);
+     /* Shadow proporcional */
+ }
+
+ .content-sobre h4 {
+     margin-right: 2vh;
+     /* Margem em VH */
+     font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+     /* Tipografia fluída */
+     font-weight: 900;
+     font-family: 'Noto', sans-serif;
+     color: var(--secund-color);
+ }
+
+ .h4-sobre {
+     margin-left: clamp(2rem, 20vw, 18.75rem);
+     /* Alinhamento fluído */
+ }
+
+ .wraper {
+     padding: 2vh 4vw 4vh 4vw;
+     /* Padding totalmente fluído */
+     width: 100%;
+     display: flex;
+     flex-direction: row;
+     gap: clamp(1.5rem, 4vw, 2.5rem);
+     /* Gap responsivo */
+     flex-wrap: wrap;
+     /* Permite quebra para mobile */
+ }
+
+ .description-sobre {
+     flex: 1;
+     /* Ocupa espaço disponível */
+     min-width: clamp(20rem, 40vw, 31.25rem);
+     /* Largura mínima fluída */
+ }
+
+ .description-sobre p {
+     font-family: "Poppins", sans-serif;
+     font-weight: 500;
+     color: var(--background-color);
+     font-size: clamp(0.8rem, 1.5vw, 1rem);
+     /* Texto fluído */
+     line-height: clamp(1.2rem, 2.5vw, 1.6rem);
+     /* Line height responsiva */
+     width: 100%;
+ }
+
+ .description-sobre button {
+     color: var(--primary-color);
+     background-color: var(--secund-color);
+     margin-top: 3vh;
+     /* Margem em VH */
+     border: 0.1vh solid var(--background-color);
+     /* Borda em VH */
+     border-radius: 4vw;
+     /* Border radius fluído */
+     font-weight: 800;
+     padding: 1rem 2rem;
+     font-family: "Noto", sans-serif;
+     font-size: clamp(0.8rem, 1.5vw, 1rem);
+     /* Texto fluído */
+     text-transform: uppercase;
+     transition: all .5s ease;
+     cursor: pointer;
+ }
+
+ .description-sobre button:hover {
+     color: var(--secund-color);
+     background-color: var(--primary-color);
+     font-size: clamp(0.9rem, 1.8vw, 1.25rem);
+     /* Efeito hover fluído */
+     border: 0.1vh solid var(--secund-color);
+     transform: rotate(6deg) scale(1.2);
+ }
+
+ .img-sobre {
+     flex: 1;
+     /* Ocupa espaço disponível */
+     width: 40%;
+     /* Largura mínima */
+ }
+
+ .img-sobre img {
+     width: 100%;
+     /* Largura completa do container */
+     max-width: clamp(30rem, 50vw, 56.25rem);
+     /* Largura máxima fluída */
+     height: auto;
+     /* Mantém proporção */
+     border-radius: clamp(2rem, 3vw, 3.125rem);
+     /* Border radius proporcional */
+ }
+
+ /* Animações com unidades fluídas */
+ @keyframes animation-img-top {
+     0% {
+         filter: blur(clamp(0.1rem, 0.2vw, 0.125rem));
+         /* Blur fluído */
+         opacity: 1;
+         transform: rotate(150deg);
+     }
+
+     50% {
+         opacity: 1;
+         transform: rotate(155deg)
+     }
+
+     100% {
+         opacity: 1;
+         transform: rotate(150deg);
+     }
+ }
+
+ @keyframes animation-img-top2 {
+     0% {
+         filter: blur(clamp(0.1rem, 0.2vw, 0.125rem));
+         opacity: 1;
+         transform: rotate(-150deg);
+     }
+
+     50% {
+         opacity: 1;
+         transform: rotate(-155deg)
+     }
+
+     100% {
+         opacity: 1;
+         transform: rotate(-150deg);
+     }
+ }
+
+ @keyframes animation-img-bluer {
+     0% {
+         filter: blur(clamp(0.1rem, 0.2vw, 0.125rem));
+         opacity: 1;
+         transform: rotate(-30deg);
+     }
+
+     50% {
+         opacity: 1;
+         transform: rotate(-40deg)
+     }
+
+     100% {
+         opacity: 1;
+         transform: rotate(-30deg);
+     }
+ }
+
+ /* Media Query mínima - apenas para ajustes extremos */
+ @media (max-width: 768px) {
+
+     body {
+         padding: 0 0.2rem;
+     }
+
+     .link-menu {
+         margin-top: 1rem;
+     }
+
+     .logo h4 {
+         position: absolute;
+         top: 3rem;
+         left: 50%;
+         transform: translate(-50%, 50%);
+     }
+
+     .home {
+         margin: 0 auto;
+         max-width: 40vw;
+     }
+
+     .content-hero .btn-hero {
+         cursor: pointer;
+         position: relative;
+         margin: 3.9rem 0 0 0;
+         top: auto;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         transition: all 1.0s ease;
+     }
+
+     .content-hero .btn-hero:hover {
+         transform: translate(-50%, -50%) rotate(2deg) scale(1.1);
+     }
+
+
+     .wraper {
+         flex-direction: column;
+         /* Stack vertical em mobile */
+     }
+
+     .content-hero {
+         left: 5vw;
+         /* Posicionamento mais próximo da borda */
+         max-width: 90vw;
+         /* Largura quase completa */
+     }
+
+     .img-content>img:nth-child(1) {
+         position: relative;
+         right: 15vw;
+         /* Ajuste da imagem central */
+     }
+
+
+
+     .h4-sobre {
+         display: none;
+     }
+
+     .content-sobre {
+         gap: 1.5rem;
+     }
+
+     .description-sobre h4 {
+         text-align: center;
+         font-size: 2.5rem;
+         width: 100%;
+         margin: 0 0 1.0rem 0;
+     }
+
+     .description-sobre p {
+         font-weight: 500;
+         line-height: 1.2rem;
+     }
+
+     .description-sobre button {
+         margin: 3rem 0 -3rem 0;
+         position: relative;
+         top: auto;
+         left: 50%;
+         transform: translate(-50%, -50%);
+         animation: none;
+     }
+
+
+     .img-sobre {
+         width: 100%;
+     }
+
+     header .logo h4 {
+         margin: 0 10vw 0 0;
+         /* Margem reduzida */
+     }
+
+     .img-content>img {
+         display: none;
+         /* Oculta imagens decorativas em telas muito pequenas */
+     }
+
+     .img-content>img:nth-child(2) {
+         display: block;
+         /* Mantém apenas a imagem central */
+         position: static;
+         /* Remove posicionamento absoluto */
+         width: 60vw;
+         /* Tamanho controlado */
+         margin: 2vh auto;
+         /* Centraliza */
+         filter: none;
+         /* Remove blur */
+         transform: none;
+         /* Remove rotação */
+         animation: none;
+         /* Remove animação */
+     }
+
+ }
+
+
+
+
+ /* Para telas muito pequenas */
+ @media (max-width: 480px) {
+     header .logo h4 {
+         margin: 0 10vw 0 0;
+         /* Margem reduzida */
+     }
+
+     .img-content>img {
+         display: none;
+         /* Oculta imagens decorativas em telas muito pequenas */
+     }
+
+     .img-content>img:nth-child(2) {
+         display: block;
+         /* Mantém apenas a imagem central */
+         position: static;
+         /* Remove posicionamento absoluto */
+         width: 60vw;
+         /* Tamanho controlado */
+         margin: 2vh auto;
+         /* Centraliza */
+         filter: none;
+         /* Remove blur */
+         transform: none;
+         /* Remove rotação */
+         animation: none;
+         /* Remove animação */
+     }
+ }
